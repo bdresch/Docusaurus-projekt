@@ -1,6 +1,9 @@
 ---
-title: haladó témák
-sidebar_position: 2
+id: bdresch-projekt-advanced
+title: Advanced-topics
+sidebar_position: 1
 ---
 
-Teljesítménynövelési tippek Docusaurus projektekhez.
+Itt találhatóak a haladóknak szóló információk.
+
+---

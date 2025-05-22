@@ -1,6 +1,12 @@
 ---
-title: API Integráció
-sidebar_position: 1
+id: bdresch-projekt-api
+title: API-integration
+sidebar_position: 2
 ---
 
-Ebben az útmutatóban megvizsgáljuk, hogyan integráljunk API-kat.
+API integrációs információk.
+
+---
+
+
+

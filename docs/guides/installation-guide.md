@@ -1,12 +1,14 @@
 ---
-id: bdresch-projekt-guide
-title: installation-guide
+
+title: Telepítési Útmutató
 sidebar_position: 1
 ---
 
-Ez egy telepítési útmutató tartalma.
+Ebben az útmutatóban megtanuljuk a telepítés lépéseit.
+
 
 ---
+
 
 
 

@@ -1,12 +1,8 @@
 ---
-id: bdresch-projekt-config
-title: configuration-tips
+title: Konfigurációs Tippek
 sidebar_position: 2
 ---
 
-Ez egy konfigurációs kisokos.
-
+Konfigurálási tanácsok a hatékonyabb dokumentációhoz.
 ---
-
-
 

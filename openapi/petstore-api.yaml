@@ -1,0 +1,145 @@
+             
+
+openapi: 3.0.4
+info:
+  title: Fiktív API - OpenA
+  description: Eszköznyílvántartó rendszer API specifikációja
+  version: 1.0.0
+paths:
+  /eszkozok:
+    post:
+      summary: Új eszköz létrehozása.
+      description: Új eszköz létrehozása.
+      requestBody:
+        description: Az új eszköz adatai.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Eszkoz'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Eszkoz'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Eszkoz'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Eszkoz'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Eszkoz'
+        '400':
+          description: Bad Request
+    get:
+      summary: Az összes eszköz listázása, szűrési lehetőséggel.
+      description: Az összes eszköz listázása, szűrési lehetőséggel.
+      parameters:
+        - name: tipus
+          in: query
+          description: Szűrés az eszköz típusára.
+          required: false
+          schema:
+            type: string
+        - name: gyarto
+          in: query
+          description: Szűrés a gyártóra.
+          required: false
+          schema:
+            type: string
+        - name: raktaron
+          in: query
+          description: Csak a raktáron lévő (true) vagy csak a nem raktáron lévő (false) eszközök listázása.
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Eszkoz'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Eszkoz'
+  /eszkozok/{eszkozId}:
+    get:
+      summary: Egy konkrét eszköz lekérdezése azonosító alapján.
+      description: Egy konkrét eszköz lekérdezése azonosító alapján.
+      parameters:
+        - name: eszkozId
+          in: path
+          description: Az eszköz azonosítója
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Eszkoz'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Eszkoz'
+        '404':
+          description: Not found
+components:
+  schemas:
+    Eszkoz:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Az eszköz egyedi azonosítója
+          readOnly: true
+          example: ID125-483
+        nev:
+          type: string
+          description: Az eszköz neve
+          example: Okosító lámpa
+        gyarto:
+          type: string
+          description: Az eszköz gyártója
+          example: Okosotthon Kft.
+        tipus:
+          type: string
+          description: Az eszköz típusa
+          default: Lámpa
+          enum:
+            - Okosotthon lámpa
+            - Audio
+            - Egyéb
+        ar:
+          type: number
+          description: Az eszköz ára
+          example: 250
+        raktaron:
+          type: boolean
+          description: Az eszköz elérhető raktáron?
+          example: true
+        utolsoFrissites:
+          type: string
+          format: date-time
+          description: Az eszköz utolsó frissítésének időpontja
+          readOnly: true
+          example: "2025-04-29"
+      required:
+        - nev
+        - gyarto
+        - tipus
+        - raktaron
+
+
